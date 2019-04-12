@@ -41,4 +41,9 @@ export class AccueilPage {
     
   }
 
+  // création de la méthode de recherche
+  search(event) {
+    this.technologies = this.dataService.search(event.target.value.trim());
+  }
+
 }

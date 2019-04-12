@@ -26,4 +26,9 @@ export class DataService {
     return this.technologies;
   }
 
+  // méthode search pour la recherche dans accueil.ts
+  search(term: string) {
+    return this.technologies.filter(tech => tech.name.toLocaleLowerCase().includes(term));
+  }
+
 }
