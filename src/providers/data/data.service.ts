@@ -11,6 +11,8 @@ import { Technology } from '../../models/technology'
 @Injectable()
 export class DataService {
 
+  categories: string[] = ['Front', 'Back', 'Fullstack', 'Hybride', 'Autre'];
+
   constructor() {
     console.log('Hello DataProvider Provider');
   }
@@ -24,6 +26,17 @@ export class DataService {
 
   getAllTechnologies() {
     return this.technologies;
+  }
+
+  //passe les categories
+  getAllCategories() {
+    return this.categories;
+  }
+
+  // Ajoute une technologie au tableau en dur
+  addTechnology(technology: Technology) {
+    this.technologies = [...this.technologies, technology];
+    console.log(this.technologies);
   }
 
   // méthode search pour la recherche dans accueil.ts
