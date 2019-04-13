@@ -15,7 +15,8 @@ export class AccueilPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataService, private loadingCtrl: LoadingController) {
   }
 
-  ionViewWillLoad() {
+  // ionViewWillEnter Rafraichies la page à chaque fois
+  ionViewWillEnter() {
 
     // Mise en place du loader
     const loader = this.loadingCtrl.create({
@@ -40,6 +41,7 @@ export class AccueilPage {
     }, 2000);
     
   }
+
 
   // création de la méthode de recherche
   search(event) {

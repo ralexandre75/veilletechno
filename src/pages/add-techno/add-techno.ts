@@ -23,7 +23,9 @@ export class AddTechnoPage {
 
   // récupération de la technology depuis le formulaire
   addTechnology(){
-    this.dataService.addTechnology(this.technology)
+    this.dataService.addTechnology(this.technology);
+    // vide les champs pour ne pas avoir un ecrassement des categories entrées
+    this.technology = {name: '', category: ''};
   }
 
 }
