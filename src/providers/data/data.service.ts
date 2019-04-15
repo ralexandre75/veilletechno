@@ -62,7 +62,10 @@ export class DataService {
 
   // Ajoute une technologie au tableau en dur
   addTechnology(technology: Technology) {
-    this.technologies = [...this.technologies, technology];
+    //this.technologies = [...this.technologies, technology];
+
+    //avec dixie
+    this.db.technologies.add(technology);
     console.log(this.technologies);
   }
 
