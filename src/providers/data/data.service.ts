@@ -1,6 +1,7 @@
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Technology } from '../../models/technology'
+import { Technology } from '../../models/technology';
+import { Schedule } from '../../models/schedule';
 
 /*
   Generated class for the DataProvider provider.
@@ -12,6 +13,8 @@ import { Technology } from '../../models/technology'
 export class DataService {
 
   categories: string[] = ['Front', 'Back', 'Fullstack', 'Hybride', 'Autre'];
+  priorities: string[] = ['basse', 'moyenne', 'haute'];
+  schedules: Schedule[] = [];
 
   constructor() {
     console.log('Hello DataProvider Provider');
@@ -33,15 +36,27 @@ export class DataService {
     return this.categories;
   }
 
+  // passe les priorities
+  getAllPriorities() {
+    return this.priorities;
+  }
+
   // Ajoute une technologie au tableau en dur
   addTechnology(technology: Technology) {
     this.technologies = [...this.technologies, technology];
     console.log(this.technologies);
   }
 
+  createSchedule(schedule: Schedule) {
+    this.schedules = [...this.schedules, schedule];
+    console.log(this.schedules);
+  }
+
   // méthode search pour la recherche dans accueil.ts
   search(term: string) {
     return this.technologies.filter(tech => tech.name.toLocaleLowerCase().includes(term));
   }
+
+
 
 }
