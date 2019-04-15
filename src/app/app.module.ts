@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { AccueilPage } from '../pages/accueil/accueil';
 import { AddTechnoPage } from '../pages/add-techno/add-techno';
 import { SchedulePage } from '../pages/schedule/schedule';
+import { ScheduleListPage } from '../pages/schedule-list/schedule-list';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,6 +19,7 @@ import { DataService } from '../providers/data/data.service';
     AccueilPage,
     AddTechnoPage,
     SchedulePage,
+    ScheduleListPage,
     TabsPage
   ],
   imports: [
@@ -30,6 +32,7 @@ import { DataService } from '../providers/data/data.service';
     AccueilPage,
     AddTechnoPage,
     SchedulePage,
+    ScheduleListPage,
     TabsPage
   ],
   providers: [

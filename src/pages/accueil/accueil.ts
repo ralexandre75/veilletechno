@@ -33,7 +33,9 @@ export class AccueilPage {
     setTimeout(() => {
 
       // Récupération des données depuis le service
-      this.technologies = this.dataService.getAllTechnologies();
+      //this.technologies = this.dataService.getAllTechnologies();
+      // avec les promesses
+      this.dataService.getAllTechnologies().then(data => this.technologies = data);
       console.log(this.technologies);
 
       // Arrêt du loader "veuillez patienter"

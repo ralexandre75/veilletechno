@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Technology } from '../../models/technology';
 import { Schedule } from '../../models/schedule';
+import Dexie from 'dexie';
 
 /*
   Generated class for the DataProvider provider.
@@ -12,12 +13,17 @@ import { Schedule } from '../../models/schedule';
 @Injectable()
 export class DataService {
 
+  db;
   categories: string[] = ['Front', 'Back', 'Fullstack', 'Hybride', 'Autre'];
   priorities: string[] = ['basse', 'moyenne', 'haute'];
   schedules: Schedule[] = [];
 
   constructor() {
-    console.log('Hello DataProvider Provider');
+    this.db = new Dexie('veilletechnobis');
+    this.db.version(1).stores({
+      schedules: '++id, name',
+      technologies: '++id'
+    })
   }
 
   technologies: Technology[] = [
@@ -27,8 +33,17 @@ export class DataService {
     { name: 'Node', category: 'Backend' }
   ];
 
-  getAllTechnologies() {
-    return this.technologies;
+  //passe les technologies
+  /* getAllCategories() {
+    return this.categories;
+  } */
+
+  getAllTechnologies(): Dexie.Promise<Technology[]> {
+    return this.db.technologies
+                .toArray()
+                .then(data => {
+                  console.log('data', data);
+                });
   }
 
   //passe les categories
