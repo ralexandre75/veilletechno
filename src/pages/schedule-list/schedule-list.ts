@@ -20,7 +20,8 @@ export class ScheduleListPage {
 
   ionViewWillEnter() {
     console.log('ionViewDidLoad ScheduleListPage');
-    this.schedules = this.dataService.getAllSchedules();
+    this.dataService.getAllSchedules().then(data => this.schedules = data);
+    console.log(this.schedules);
   }
 
 }

@@ -26,12 +26,14 @@ export class DataService {
     })
   }
 
-  technologies: Technology[] = [
+/*   technologies: Technology[] = [
     { name: 'Angular', category: 'Front' }, 
     { name: 'PWA', category: 'Front' }, 
     { name: 'Ionic', category: 'Front' }, 
     { name: 'Node', category: 'Backend' }
-  ];
+  ]; */
+
+  technologies: Technology[];
 
   //passe les technologies
   /* getAllCategories() {
@@ -39,11 +41,7 @@ export class DataService {
   } */
 
   getAllTechnologies(): Dexie.Promise<Technology[]> {
-    return this.db.technologies
-                .toArray()
-                .then(data => {
-                  console.log('data', data);
-                });
+    return this.db.technologies.toArray();
   }
 
   //passe les categories
@@ -56,22 +54,24 @@ export class DataService {
     return this.priorities;
   }
 
-  getAllSchedules() {
-    return this.schedules;
+  getAllSchedules(): Dexie.Promise<Schedule[]> {
+    return this.db.schedules.toArray();
   }
 
   // Ajoute une technologie au tableau en dur
   addTechnology(technology: Technology) {
     //this.technologies = [...this.technologies, technology];
+    //console.log(this.technologies);
 
     //avec dixie
     this.db.technologies.add(technology);
-    console.log(this.technologies);
+    
   }
 
   createSchedule(schedule: Schedule) {
-    this.schedules = [...this.schedules, schedule];
-    console.log(this.schedules);
+    //this.schedules = [...this.schedules, schedule];
+    //console.log(this.schedules);
+    this.db.schedules.add(schedule);
   }
 
   // méthode search pour la recherche dans accueil.ts
