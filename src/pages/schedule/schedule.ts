@@ -13,6 +13,7 @@ import { DataService } from '../../providers/data/data.service';
 export class SchedulePage {
 
   schedule: Schedule = {
+    name: '',
     date: null,
     duration: 0,
     priority: '',
@@ -20,15 +21,16 @@ export class SchedulePage {
     technology: { name: '', category: ''}
   }
 
+  technologies: Technology[];
   categories: string[];
   priorities: string[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataService, private toastCtrl: ToastController) {
   }
 
-  ionViewWillLoad() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad SchedulePage');
-
+    this.technologies = this.dataService.getAllTechnologies();
     this.categories = this.dataService.getAllCategories();
     this.priorities = this.dataService.getAllPriorities();
   }
@@ -45,6 +47,7 @@ export class SchedulePage {
 
   resetSchedule() {
     this.schedule = {
+      name: '',
       date: null,
       duration: 0,
       priority: '',

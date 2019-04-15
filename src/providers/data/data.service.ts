@@ -41,6 +41,10 @@ export class DataService {
     return this.priorities;
   }
 
+  getAllSchedules() {
+    return this.schedules;
+  }
+
   // Ajoute une technologie au tableau en dur
   addTechnology(technology: Technology) {
     this.technologies = [...this.technologies, technology];
